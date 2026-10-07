@@ -1,0 +1,6 @@
+{
+  "name": "Pure Detailing UK",
+  "description": "Premium car detailing studio based in Chelmsford, UK. Precision detailing and pristine finish for high-end and everyday vehicles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
