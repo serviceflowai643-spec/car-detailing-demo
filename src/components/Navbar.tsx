@@ -4,9 +4,10 @@ import { Menu, X, Phone, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
   onBookClick: () => void;
+  onReplayIntro?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onBookClick, onReplayIntro }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -70,7 +71,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
           <div className="flex items-center justify-between">
             
             {/* Brand Logo */}
-            <a href="#" className="flex items-center gap-2.5 group">
+            <a
+              href="#"
+              onClick={(e) => {
+                if (onReplayIntro) {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  onReplayIntro();
+                }
+              }}
+              className="flex items-center gap-2.5 group cursor-pointer"
+            >
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#d4a359] to-[#8d6220] flex items-center justify-center text-black font-black text-sm shadow-md shadow-[#d4a359]/20 group-hover:scale-105 transition-transform">
                 PD
               </div>

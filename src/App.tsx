@@ -12,9 +12,11 @@ import { BookingQuoteSection } from './components/BookingQuoteSection';
 import { LocationSection } from './components/LocationSection';
 import { Footer } from './components/Footer';
 import { AskPureAI } from './components/AskPureAI';
+import { OpeningAnimation } from './components/OpeningAnimation';
 
 export default function App() {
   const [selectedService, setSelectedService] = useState<string>('Full Detail');
+  const [showOpeningAnimation, setShowOpeningAnimation] = useState(true);
 
   const scrollToQuote = (serviceName?: string) => {
     if (serviceName) {
@@ -28,8 +30,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#080a0d] text-[#e8ebf0] selection:bg-[#d4a359]/30 selection:text-white flex flex-col font-sans">
+      {/* Luxury Automotive Opening Animation */}
+      {showOpeningAnimation && (
+        <OpeningAnimation onComplete={() => setShowOpeningAnimation(false)} />
+      )}
+
       {/* Sticky Navigation */}
-      <Navbar onBookClick={() => scrollToQuote()} />
+      <Navbar
+        onBookClick={() => scrollToQuote()}
+        onReplayIntro={() => setShowOpeningAnimation(true)}
+      />
 
       <main className="flex-1">
         {/* Hero Section */}
